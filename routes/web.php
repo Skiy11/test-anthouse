@@ -11,6 +11,14 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+$router->get('/', [
+    'as' => '/', 'uses' => 'IndexController@getEnrolleesList'
+]);
+
+$router->get('registration', [
+    'as' => 'registration', 'uses' => 'IndexController@registration'
+]);
+
+$router->post('send', [
+    'as' => 'send', 'uses' => 'IndexController@send'
+]);
