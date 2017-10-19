@@ -30,7 +30,12 @@
             </tbody>
         </table>
 
-        {{ $enrollees->links() }}
+            @if (isset($searchQuery))
+                {!! $enrollees->appends(['query' => $searchQuery])->render() !!}
+            @else
+                {!! $enrollees->render() !!}
+            @endif
+
     </div>
 
 @stop

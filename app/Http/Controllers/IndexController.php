@@ -100,12 +100,12 @@ class IndexController extends Controller
      */
     public function search(Request $request)
     {
-        $enrollees = Enrollee::where('points', 'LIKE', '%' . $request->input('search') . '%')
-            ->orWhere('group', 'LIKE', '%' . $request->input('search') . '%')
-            ->orWhere('second_name', 'LIKE', '%' . $request->input('search') . '%')
-            ->orWhere('name', 'LIKE', '%' . $request->input('search') . '%')
+        $enrollees = Enrollee::where('points', 'LIKE', '%' . $request->input('query') . '%')
+            ->orWhere('group', 'LIKE', '%' . $request->input('query') . '%')
+            ->orWhere('second_name', 'LIKE', '%' . $request->input('query') . '%')
+            ->orWhere('name', 'LIKE', '%' . $request->input('query') . '%')
             ->paginate(50);
 
-        return view('section.list', ['enrollees' => $enrollees, 'searchQuery' => $request->input('search')]);
+        return view('section.list', ['enrollees' => $enrollees, 'searchQuery' => $request->input('query')]);
     }
 }

@@ -27,6 +27,6 @@ $router->post('registration', [
     'as' => 'registration', 'uses' => 'IndexController@registration'
 ]);
 
-$router->post('search', [
+$router->get('/search', [
     'as' => 'search', 'uses' => 'IndexController@search'
 ]);
