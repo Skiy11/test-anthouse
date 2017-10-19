@@ -93,4 +93,19 @@ class IndexController extends Controller
 
         return view('section.registration', ['errors' => $errors]);
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\View\View
+     */
+    public function search(Request $request)
+    {
+        $enrollees = Enrollee::where('points', 'LIKE', '%' . $request->input('search') . '%')
+            ->orWhere('group', 'LIKE', '%' . $request->input('search') . '%')
+            ->orWhere('second_name', 'LIKE', '%' . $request->input('search') . '%')
+            ->orWhere('name', 'LIKE', '%' . $request->input('search') . '%')
+            ->paginate(50);
+
+        return view('section.list', ['enrollees' => $enrollees, 'searchQuery' => $request->input('search')]);
+    }
 }

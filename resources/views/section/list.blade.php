@@ -2,6 +2,11 @@
 @section('content')
 
     <div class="col">
+        @if (isset($searchQuery))
+            <p><a href="{{ url('/') }}">Показать всех абитуриентов</a></p>
+            <p>Показаны только абитуриенты, найденные по запросу - {{ $searchQuery }}</p>
+        @endif
+
         <table class="table table-striped">
             <thead>
             <tr>
