@@ -15,6 +15,10 @@ $router->get('/', [
     'as' => '/', 'uses' => 'IndexController@getEnrolleesList'
 ]);
 
+$router->get('/{field}/{sort}', [
+    'as' => 'sorting', 'uses' => 'IndexController@getEnrolleesSortingList'
+]);
+
 $router->get('registration', [
     'as' => 'registration', 'uses' => 'IndexController@registration'
 ]);

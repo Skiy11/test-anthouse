@@ -5,14 +5,13 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Имя</th>
-                <th>Фамилия</th>
-                <th>Номер группы</th>
-                <th>Баллы</th>
+                <th><a href="{{ route('sorting', ['field' => 'name', 'sort' => isset($getSort) ? $getSort : 'asc']) }}">Имя</a></th>
+                <th><a href="{{ route('sorting', ['field' => 'second_name', 'sort' => isset($getSort) ? $getSort : 'asc']) }}">Фамилия</a></th>
+                <th><a href="{{ route('sorting', ['field' => 'group', 'sort' => isset($getSort) ? $getSort : 'asc']) }}">Номер группы</a></th>
+                <th><a href="{{ route('sorting', ['field' => 'points', 'sort' => isset($getSort) ? $getSort : 'asc']) }}">Баллы</a></th>
             </tr>
             </thead>
             <tbody>
-
 
             @foreach ($enrollees as $enrollee)
                 <tr>

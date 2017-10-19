@@ -8,12 +8,42 @@ use App\Model\Enrollee;
 
 class IndexController extends Controller
 {
+    /**
+     * Get list enrollees in view
+     *
+     * @return \Illuminate\View\View
+     */
     public function getEnrolleesList()
     {
         $enrollees = Enrollee::orderBy('points', 'desc')->paginate(50);
         return view('section.list', ['enrollees' => $enrollees]);
     }
 
+    /**
+     * Sorting table with enrollees
+     *
+     * @param string $field
+     * @param string $sort
+     * @return \Illuminate\View\View
+     */
+    public function getEnrolleesSortingList($field, $sort)
+    {
+        $sortFields = ['name', 'second_name', 'points', 'group'];
+        $sortOrders = ['asc', 'desc'];
+
+        if (array_search($sort, $sortOrders) !== false && array_search($field, $sortFields) !== false) {
+            $enrollees = Enrollee::orderBy($field, $sort)->paginate(50);
+            $getSort = $sort == 'desc' ? 'asc' : 'desc';
+            return view('section.list', ['enrollees' => $enrollees, 'getSort' => $getSort]);
+        }
+    }
+
+    /**
+     * Registrate new enrollee
+     *
+     * @param Request $request
+     * @return \Illuminate\View\View
+     */
     public function registration(Request $request)
     {
         $errors = [];
