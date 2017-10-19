@@ -5,7 +5,6 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>#</th>
                 <th>Имя</th>
                 <th>Фамилия</th>
                 <th>Номер группы</th>
@@ -13,15 +12,21 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>ОТ-125</td>
-                <td>148</td>
-            </tr>
+
+
+            @foreach ($enrollees as $enrollee)
+                <tr>
+                    <td>{{$enrollee->name}}</td>
+                    <td>{{$enrollee->second_name}}</td>
+                    <td>{{$enrollee->group}}</td>
+                    <td>{{$enrollee->points}}</td>
+                </tr>
+            @endforeach
+
             </tbody>
         </table>
+
+        {{ $enrollees->links() }}
     </div>
 
 @stop

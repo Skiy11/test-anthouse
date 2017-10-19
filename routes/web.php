@@ -19,6 +19,6 @@ $router->get('registration', [
     'as' => 'registration', 'uses' => 'IndexController@registration'
 ]);
 
-$router->post('send', [
-    'as' => 'send', 'uses' => 'IndexController@send'
+$router->post('registration', [
+    'as' => 'registration', 'uses' => 'IndexController@registration'
 ]);
